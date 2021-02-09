@@ -5,6 +5,19 @@ runtime = data.data(:,1); %seconds
 disp = data.data(:,2); %mm
 force = data.data(:,3); %N
 ext = data.data(:,4); %mm
+a2 = [4.41 4.33 4.26 4.16 4.07 3.98 3.86 3.75]'; %Bridgman a2
+R = [40 30 15 14.5 14 13.5 12 7.5]'; %Bridgman R
+F = [10 20 30 40 50]';%Brinell force kgf
+fid = [0.277 0.386 0.449 0.531 0.577]';% Brinell dia
+sid =[0.267 0.382 0.461 0.524 0.567]';% Brinell dia
+
+d0 = 5.02;
+L0ext = 25;
+L0C = 36;
+L0A5 = 25;
+dfZ=3.6;
+LFA5 = 32.4;
+
 
 %% 1 - A P - δ diagram shall be presented that includes three curves with measured displacements:
 
@@ -29,7 +42,10 @@ plot(ext,force)
 %the neck and actual cross-section area at necking). The third curve shall present the
 %true stresses and strains according to a full Bridgman correction.
 
-
+sigmaeng = force/pi*d0^2/4;
+straineng = disp/L0C;
+figure(3)
+plot(straineng,sigmaeng)
 
 
 
